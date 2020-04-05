@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: humanity-against-covid19-frontend
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: humanity-against-covid19-frontend
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 10%
+      maxSurge: 50%
+  template:
+    metadata:
+      labels:
+        app: humanity-against-covid19-frontend
+    spec:
+      containers:
+      - name: humanity-against-covid19-frontend
+        image: humanityagainstcovid19/frontend:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: humanity-against-covid19-frontend
+  namespace: default
+spec:
+  selector:
+    app: humanity-against-covid19-frontend
+  ports:
+    - port: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+  name: humanity-against-covid19-frontend
+  namespace: default
+spec:
+  rules:
+  - host: humanityagainstcovid19.com
+    http:
+      paths:
+      - backend:
+          serviceName: humanity-against-covid19-frontend
+          servicePort: 80
+        path: /
