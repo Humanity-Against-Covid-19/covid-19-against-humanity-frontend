@@ -3,7 +3,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 const defaultFonts = css`
-    font-family: 
+    font-family:
         "HelveticaNeue-CondensedBold",
         "HelveticaNeueBoldCondensed",
         "HelveticaNeue-Bold-Condensed",
@@ -66,7 +66,7 @@ const App: React.FunctionComponent = () => (
         </StyledSubTitle>
 
         <StyledSubSubTitle>
-            Coming soon.
+            Coming soon..
         </StyledSubSubTitle>
     </StyledContainer>
 );
