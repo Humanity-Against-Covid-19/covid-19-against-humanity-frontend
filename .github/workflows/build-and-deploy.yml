@@ -19,9 +19,10 @@ jobs:
         with:
           node-version: '10.x'
       - name: yarn install
-      - run: yarn install
+        run: yarn install
       - name: yarn build
-      - run: yarn prodBuild
+        run: yarn prodBuild
+
 
       - uses: mr-smithers-excellent/docker-build-push@v2
       - name: build dockerfile
