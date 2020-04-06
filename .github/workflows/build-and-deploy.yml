@@ -36,11 +36,11 @@ jobs:
 
       - name: env vars pls
         run: env
-        
+
       - uses: Azure/k8s-deploy@v1
         with:
           namespace: default
           manifests: |
               deploy/deployment.yaml
-          images: humanityagainstcovid19/frontend:${GITHUB_RUN_NUMBER}
+          images: humanityagainstcovid19/frontend:${{ github.run_id }}
           kubectl-version: latest
