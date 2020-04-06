@@ -15,11 +15,16 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: actions/setup-node@v1
+      - name: Use Node.js
         with:
           node-version: '10.x'
+      - name: yarn install
+      - run: yarn install
+      - name: yarn build
       - run: yarn prodBuild
 
       - uses: mr-smithers-excellent/docker-build-push@v2
+      - name: build dockerfile
         with:
           image: humanityagainstcovid19/frontend
           tag: latest
@@ -28,11 +33,14 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - uses: azure/k8s-set-context@v1
+      - name: prepare k8s
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.DO_KUBECONFIG }}
         id: setcontext
+
       - uses: Azure/k8s-deploy@v1
+      - name: deploy to k8s
         with:
           namespace: 'default'
           manifests: |
