@@ -42,5 +42,5 @@ jobs:
           namespace: default
           manifests: |
               deploy/deployment.yaml
-          images: humanityagainstcovid19/frontend:${{ github.run_id }}
+          images: humanityagainstcovid19/frontend:${{ github.run_number }}
           kubectl-version: latest
