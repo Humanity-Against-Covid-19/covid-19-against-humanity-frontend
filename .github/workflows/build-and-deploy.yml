@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.19'
+          node-version: '10.x'
       - run: yarn prodBuild
 
       - uses: mr-smithers-excellent/docker-build-push@v2
