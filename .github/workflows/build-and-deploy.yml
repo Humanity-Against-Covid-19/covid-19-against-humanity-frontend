@@ -20,7 +20,7 @@ jobs:
       - name: yarn install
         run: yarn install
       - name: yarn build
-        run: yarn install
+        run: yarn prodBuild
 
       - uses: mr-smithers-excellent/docker-build-push@v2
         with:
