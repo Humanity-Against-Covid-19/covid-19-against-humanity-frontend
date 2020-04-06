@@ -35,7 +35,7 @@ jobs:
         id: setcontext
 
       - name: env vars pls
-        run: env
+        run: echo ${{ github }} ${{ github.run_id }}
 
       - uses: Azure/k8s-deploy@v1
         with:
