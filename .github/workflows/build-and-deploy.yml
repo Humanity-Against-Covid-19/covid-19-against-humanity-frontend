@@ -16,13 +16,14 @@ jobs:
 
       - name: yarn install
         run: yarn install
+
       - name: yarn build
         run: yarn prodBuild
 
       - uses: mr-smithers-excellent/docker-build-push@v2
         with:
           image: humanityagainstcovid19/frontend
-          tag: ${GITHUB_RUN_NUMBER}
+          tag: ${{ event.run_id }}
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -38,5 +39,5 @@ jobs:
           namespace: default
           manifests: |
               deploy/deployment.yaml
-          images: humanityagainstcovid19/frontend:${GITHUB_RUN_NUMBER}
+          images: humanityagainstcovid19/frontend:${{ event.run_id }}
           kubectl-version: latest
