@@ -25,6 +25,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v2
         with:
           image: humanityagainstcovid19/frontend
+          tag: ${GITHUB_SHA::8}
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -40,5 +41,5 @@ jobs:
           namespace: 'default'
           manifests: |
               deploy/deployment.yaml
-          images: 'humanityagainstcovid19/frontend:latest'
+          images: 'humanityagainstcovid19/frontend:${GITHUB_SHA::8}'
           kubectl-version: 'latest'

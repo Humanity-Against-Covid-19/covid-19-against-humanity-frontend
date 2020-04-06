@@ -20,8 +20,6 @@ spec:
     spec:
       containers:
       - name: humanity-against-covid19-frontend
-        image: humanityagainstcovid19/frontend:latest
-        imagePullPolicy: Always
         resources:
           requests:
             cpu: 200m
