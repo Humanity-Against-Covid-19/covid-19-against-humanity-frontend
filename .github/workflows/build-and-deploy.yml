@@ -17,9 +17,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: Install dependencies
+      - name: yarn install
         run: yarn install
-
+      - name: yarn build
+        run: yarn install
 
       - uses: mr-smithers-excellent/docker-build-push@v2
         with:
