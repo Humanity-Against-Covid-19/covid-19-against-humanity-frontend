@@ -66,7 +66,7 @@ const App: React.FunctionComponent = () => (
         </StyledSubTitle>
 
         <StyledSubSubTitle>
-            Coming soon...
+            Coming soon.
         </StyledSubSubTitle>
     </StyledContainer>
 );
